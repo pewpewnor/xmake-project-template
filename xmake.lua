@@ -13,4 +13,4 @@ end
 
 target("project-name")
     set_kind("binary")
-    add_files("src/*.cpp")
+    add_files("src/**.cpp")
