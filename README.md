@@ -23,8 +23,10 @@ xmake project -k compile_commands
 ```bash
 # set build mode for debug
 xmake f -m debug
-# set your toolchain if needed
-xmake f --toolchain=clang
+# set your toolchain and runtimes if needed
+xmake f --toolchain=clang --runtimes=c++_static
+# check the current build configuration
+xmake f -v
 # build the project
 xmake
 # run the project
