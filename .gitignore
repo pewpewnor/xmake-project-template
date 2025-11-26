@@ -3,9 +3,10 @@
 .vscode/
 .DS_Store
 
-# xmake cache
+# xmake
 .xmake/
 build/
+output/
 .cache/
 # xmake generated project config
 makefile
