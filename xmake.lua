@@ -2,7 +2,7 @@ set_languages("c++23")
 set_warnings("allextra", "pedantic", "error")
 set_toolchains("clang")
 set_runtimes("c++_static")
-set_kind("static")
+set_kind("shared")
 
 add_rules("mode.debug", "mode.release")
 if is_mode("debug") then
@@ -14,6 +14,8 @@ elseif is_mode("debug_tsan") then
     set_mode("debug")
     set_policy("build.sanitizer.thread", true)
     add_defines("DEBUG")
+else
+    set_kind("static")
 end
 
 add_requireconfs("*", { configs = { shared = not is_mode("release") } })
