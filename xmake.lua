@@ -11,7 +11,6 @@ if is_mode("debug") then
     set_policy("build.sanitizer.undefined", true)
     add_defines("DEBUG")
 elseif is_mode("debug_tsan") then
-    set_mode("debug")
     set_policy("build.sanitizer.thread", true)
     add_defines("DEBUG")
 else
