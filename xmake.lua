@@ -4,14 +4,13 @@ set_toolchains("clang")
 set_runtimes("c++_static")
 set_kind("shared")
 
-add_rules("mode.debug", "mode.release")
+add_rules("mode.debug", "mode.tsan", "mode.release")
 if is_mode("debug") then
-    set_policy("build.sanitizer.address", true)
-    set_policy("build.sanitizer.leak", true)
-    set_policy("build.sanitizer.undefined", true)
+	set_policy("build.sanitizer.address", true)
+	set_policy("build.sanitizer.undefined", true)
+	set_policy("build.sanitizer.leak", true)
     add_defines("DEBUG")
-elseif is_mode("debug_tsan") then
-    set_policy("build.sanitizer.thread", true)
+elseif not is_mode("release") then
     add_defines("DEBUG")
 else
     set_kind("static")
