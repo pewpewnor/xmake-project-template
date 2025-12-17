@@ -18,6 +18,13 @@ end
 
 add_requireconfs("*", { configs = { shared = not is_mode("release") } })
 
+rule("build-target")
+    if is_mode("release") then
+        on_load(function(target)
+            target:set("policy", "build.optimization.lto", true)
+        end)
+    end
+
 target("project-name")
     set_kind("binary")
     add_files("src/**.cpp")
